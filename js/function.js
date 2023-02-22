@@ -1,12 +1,7 @@
 //Функция №1
 const NEW_STRING = 'aaaaaaaaaaaaaaaaaaaaaaaa';
 
-const getStringLength = (newString, maxLength) => {
-  if (newString.length >= maxLength) {
-    return true;
-  }
-  return false;
-};
+const getStringLength = (newString, maxLength) => newString.length <= maxLength;
 
 getStringLength(NEW_STRING, 20);
 
@@ -49,28 +44,8 @@ const getOnlyNumbers = (phrase) => {
 getOnlyNumbers('ECMAScript 2022');
 
 //Функция №4
-const makeNewString = (str, minLength, pad) => {
-  let i = 0;
-  let newSymbol = '';
-  while (str.length + newSymbol.length <= minLength) {
-    newSymbol += pad[i];
-    i = i + 1 < pad.length ? i + 1 : 0;
-  }
-  return newSymbol + str;
-};
 
-makeNewString('q', 4, 'we');
-
-const myPadStart = (str, minLength, pad) => {
-  const actualPad = minLength - str.length;
-
-  if (actualPad <= 0) {
-    return str;
-  }
-  const tempPad = pad.slice(0, actualPad % pad.length);
-  const tempRepeat = pad.repeat(actualPad / pad.length);
-  return tempPad + tempRepeat + str;
-};
+const myPadStart = (str, minLength, pad) => str.padStart(minLength, pad);
 
 myPadStart('qwerty', 4, '0');
 
