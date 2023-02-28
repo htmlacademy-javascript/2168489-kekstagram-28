@@ -1,7 +1,6 @@
 const NUMBER_OF_POSTS = 25;
 const MIN_NUMBERS_OF_LIKES = 15;
 const MAX_NUMBERS_OF_LIKES = 200;
-const MIN_COMMENTS = 0;
 const MAX_COMMENTS = 100;
 const MIN_AVATAR_ID = 1;
 const MAX_AVATAR_ID = 6;
@@ -18,7 +17,6 @@ const getUniqueId = (numberOfId) => {
   }
   return idArray;
 };
-
 const id = getUniqueId(NUMBER_OF_POSTS);
 
 // функция для генерации URL
@@ -29,7 +27,6 @@ const getUniqueUrl = (numberOfUrl) => {
   }
   return urlArray;
 };
-
 const url = getUniqueUrl(NUMBER_OF_POSTS);
 
 
@@ -41,19 +38,19 @@ const getLikes = () => {
 
 // функция для генерации id комментария
 const getCommentId = () => {
-  const commentId = Math.floor(MAX_COMMENTS - Math.random() * (MAX_COMMENTS, MIN_COMMENTS));
+  const commentId = Math.floor(Math.random() * MAX_COMMENTS);
   return commentId;
 };
 
 //функция для генерации случайного описания
-const getUniueDescription = () => {
-  const randomDescription = Math.floor(Math.random * description.length - 1);
+const getDescription = () => {
+  const randomDescription = Math.floor(Math.random() * description.length - 1);
   return randomDescription;
 };
 
 // функция для генерации пути до файла с аватаром
 const getAvatarId = () => {
-  const avatarId = Math.floor(Math.random() * (MAX_AVATAR_ID, MIN_AVATAR_ID) + MIN_AVATAR_ID);
+  const avatarId = Math.floor(Math.random() * (MAX_AVATAR_ID - MIN_AVATAR_ID) + MIN_AVATAR_ID);
   return avatarId;
 };
 
@@ -64,9 +61,20 @@ const getMessage = () => {
 };
 
 // функция для генерации имени
-const getNames = () => {
+const getName = () => {
   const randomName = Math.floor(Math.random() * names.length - 1);
   return randomName;
 };
 
-
+export const createPosts = () => ({
+  id:getUniqueId(NUMBER_OF_POSTS),
+  url: getUniqueUrl(NUMBER_OF_POSTS),
+  description: getDescription(),
+  likes: getLikes(),
+  comments: {
+    id: getCommentId(MAX_COMMENTS),
+    avatar: getAvatarId(MIN_AVATAR_ID, MAX_AVATAR_ID),
+    message: getMessage(),
+    name: getName()
+  },
+});
