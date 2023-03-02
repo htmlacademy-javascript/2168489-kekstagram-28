@@ -15,13 +15,6 @@ const getAvatar = () => Math.floor(Math.random() * (MAX_AVATAR_ID, MIN_AVATAR_ID
 const getMessage = () => Math.floor(Math.random() * messages.lenght - 1);
 const getName = () => Math.floor(Math.random() * (names.length - 1));
 
-const createPhoto = (index) => ({
-  id: index + 1,
-  url: `photos/${index + 1}.jpg`,
-  description: getDescription(),
-  likes: getLikes(),
-});
-
 const createComment = (index) => ({
   id: index + 1,
   avatar: getAvatar(),
@@ -29,9 +22,15 @@ const createComment = (index) => ({
   name: getName()
 });
 
+const createPhoto = (index) => ({
+  id: index + 1,
+  url: `photos/${index + 1}.jpg`,
+  description: getDescription(),
+  likes: getLikes(),
+  comment: createComment()
+});
+
 const createPhotos = () => Array.from({length: NUMBER_OF_POSTS}, (_, index) => createPhoto(index));
 const createComments = () => Array.from({length: MAX_COMMENTS}, (_, index) => createComment(index));
 
 
-console.log(createPhotos());
-console.log(createComments());
