@@ -1,5 +1,4 @@
 import {
-  COUNTER,
   MAX_COMMENTS,
   NUMBER_OF_POSTS,
 } from './varibles.js';
@@ -13,8 +12,10 @@ import {
   getName,
 } from './utils.js';
 
+let counter = 1;
+
 const createComment = () => ({
-  id: COUNTER + 1,
+  id: counter++,
   avatar: `img/avatar-${getAvatar()}.svg`,
   message: getMessage(),
   name: getName()
@@ -32,4 +33,4 @@ const createPhoto = (index) => ({
 
 const createPhotos = () => Array.from({length: NUMBER_OF_POSTS}, (_, index) => createPhoto(index));
 
-export {createPhotos};
+export { createPhotos };
