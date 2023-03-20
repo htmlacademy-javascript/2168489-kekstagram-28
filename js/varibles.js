@@ -8,6 +8,7 @@ const descriptions = ['Отличный вид', 'Вернуться бы еще
 const messages = ['В целом всё неплохо. Но не всё.',
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.'];
 const names = ['Михаил', 'Иван', 'Сергей', 'Татьяна', 'Мария', 'Ольга', 'Ярослава'];
+const COMMENTS_PER_LOAD = 5;
 
 export {
   NUMBER_OF_POSTS,
@@ -19,4 +20,5 @@ export {
   descriptions,
   messages,
   names,
+  COMMENTS_PER_LOAD,
 };
