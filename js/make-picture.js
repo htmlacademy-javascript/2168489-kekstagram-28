@@ -1,16 +1,19 @@
+import { showFullPicture } from './big-picture.js';
+
 const container = document.querySelector('.pictures');
 const thumbnailTemplate = document
   .querySelector('#picture')
   .content.querySelector('.picture');
 
-const createThumbnail = ({ comments, description, likes, url, id }) => {
+const createThumbnail = (picture) => {
+  const { comments, description, likes, url } = picture;
   const thumbnail = thumbnailTemplate.cloneNode(true);
 
   thumbnail.querySelector('.picture__img').src = url;
   thumbnail.querySelector('.picture__img').alt = description;
   thumbnail.querySelector('.picture__comments').textContent = comments.length;
   thumbnail.querySelector('.picture__likes').textContent = likes;
-  thumbnail.dataset.thumbnailId = id;
+  thumbnail.addEventListener('click', () => showFullPicture(picture));
 
   return thumbnail;
 };
