@@ -17,15 +17,18 @@ const cancelCross = bigPicture.querySelector('#picture-cancel');
 let shownComments = [];
 
 const createFullPictureComments = (commentsData) => {
-  const { avatar, name, message } = commentsData;
+  commentsData.forEach((item) => {
+    const { avatar, name, message } = item;
 
-  const comment = singleComment.cloneNode(true);
+    const comment = singleComment.cloneNode(true);
 
-  comment.querySelector('.social__picture').src = avatar;
-  comment.querySelector('.social__picture').alt = name;
-  comment.querySelector('.social__text').textContent = message;
+    comment.querySelector('.social__picture').src = avatar;
+    comment.querySelector('.social__picture').alt = name;
+    comment.querySelector('.social__text').textContent = message;
 
-  socialComments.append(comment);
+    socialComments.append(comment);
+  });
+
 };
 
 const showCommentsByDefault = (comments) => {
@@ -75,7 +78,7 @@ const showModal = () => {
 };
 
 
-const showFullPicture = (url, likes, comments, description) => {
+const showFullPicture = ({url, likes, comments, description}) => {
   showModal();
 
   bigPictureElement.querySelector('img').src = url;
