@@ -58,6 +58,7 @@ const hideModal = () => {
   document.body.classList.remove('modal-open');
   commentsLoader.classList.remove('hidden');
   commentsLoader.removeEventListener('click', renderMoreComments);
+  document.removeEventListener('click', cancelCross);
 };
 
 const onDocumentKeydown = (evt) => {
@@ -75,6 +76,7 @@ const showModal = () => {
   bigPicture.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
+  document.addEventListener('click', cancelCross);
 };
 
 
