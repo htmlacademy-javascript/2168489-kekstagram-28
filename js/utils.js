@@ -20,6 +20,8 @@ const getMessage = () => messages[getRandomValue(0, messages.length - 1)];
 
 const getName = () => names[getRandomValue(0, names.length - 1)];
 
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
 export {
   getRandomValue,
   getDescription,
@@ -27,4 +29,5 @@ export {
   getAvatar,
   getMessage,
   getName,
+  isEscapeKey,
 };
