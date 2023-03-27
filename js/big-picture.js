@@ -53,12 +53,8 @@ const renderMoreComments = () => {
   }
 };
 
-const hideModal = () => {
-  bigPicture.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-  commentsLoader.classList.remove('hidden');
-  commentsLoader.removeEventListener('click', renderMoreComments);
-};
+const handleCloseButtonClick = () => hideModal();
+
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -67,14 +63,21 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-cancelCross.addEventListener('click', () =>
-  hideModal()
-);
+function hideModal () {
+  bigPicture.classList.add('hidden');
+  document.body.classList.remove('modal-open');
+  commentsLoader.classList.remove('hidden');
+  document.removeEventListener('keydown', onDocumentKeydown);
+  cancelCross.removeEventListener('click', handleCloseButtonClick);
+  commentsLoader.removeEventListener('click', renderMoreComments);
+}
 
 const showModal = () => {
   bigPicture.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
+  cancelCross.addEventListener('click', handleCloseButtonClick);
+  commentsLoader.addEventListener('click', renderMoreComments);
 };
 
 
@@ -88,7 +91,6 @@ const showFullPicture = ({url, likes, comments, description}) => {
 
   socialComments.innerHTML = '';
   shownComments = comments;
-  commentsLoader.addEventListener('click', renderMoreComments);
   showCommentsByDefault(comments);
 
 };
