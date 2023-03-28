@@ -56,7 +56,7 @@ const renderMoreComments = () => {
 const handleCloseButtonClick = () => hideModal();
 
 
-const onDocumentKeydown = (evt) => {
+const handleDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     hideModal();
@@ -67,7 +67,7 @@ function hideModal () {
   bigPicture.classList.add('hidden');
   document.body.classList.remove('modal-open');
   commentsLoader.classList.remove('hidden');
-  document.removeEventListener('keydown', onDocumentKeydown);
+  document.removeEventListener('keydown', handleDocumentKeydown);
   cancelCross.removeEventListener('click', handleCloseButtonClick);
   commentsLoader.removeEventListener('click', renderMoreComments);
 }
@@ -75,7 +75,7 @@ function hideModal () {
 const showModal = () => {
   bigPicture.classList.remove('hidden');
   document.body.classList.add('modal-open');
-  document.addEventListener('keydown', onDocumentKeydown);
+  document.addEventListener('keydown', handleDocumentKeydown);
   cancelCross.addEventListener('click', handleCloseButtonClick);
   commentsLoader.addEventListener('click', renderMoreComments);
 };
