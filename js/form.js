@@ -1,4 +1,6 @@
 import { HASHTAG_CHECK, MAX_HASHTAG_COUNT, HASHTAG_ERROR_TEXT } from './varibles.js';
+import { resetScale, setScale } from './scale.js';
+import { resetEffects } from './effects.js';
 
 const body = document.querySelector('body');
 const formModal = document.querySelector('.img-upload__overlay');
@@ -19,16 +21,18 @@ uploadCancelButton.addEventListener('click', hideModal);
 const isTextFieldFocused = () =>
   document.activeElement === hashtagField || document.activeElement === commentField;
 
-function handleDocumentKeydown(evt) {
+const handleDocumentKeydown = (evt) => {
   if (evt.key === 'Escape' && !isTextFieldFocused()) {
     evt.preventDefault();
     hideModal();
   }
-}
+};
 
 function hideModal () {
   form.reset();
   pristine.reset();
+  resetScale();
+  resetEffects();
   formModal.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', handleDocumentKeydown);
@@ -53,7 +57,7 @@ const validateTags = (value) => {
 pristine.addValidator(
   hashtagField,
   validateTags,
-  HASHTAG_ERROR_TEXT,
+  HASHTAG_ERROR_TEXT
 );
 
 const handleFormSubmit = (evt) => {
@@ -65,6 +69,7 @@ const handleFormSubmit = (evt) => {
 };
 
 const showModal = () => {
+  setScale();
   formModal.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', handleDocumentKeydown);
@@ -72,7 +77,7 @@ const showModal = () => {
 
 form.addEventListener('submit', handleFormSubmit);
 
-const clickOnUpload = function () {
+const clickOnUpload = () => {
   uploadFile.addEventListener('change', showModal);
 };
 

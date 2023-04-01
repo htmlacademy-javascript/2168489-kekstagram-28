@@ -12,6 +12,10 @@ const COMMENTS_PER_LOAD = 5;
 const HASHTAG_CHECK = /#[a-zа-яё0-9]{1,19}$/i;
 const MAX_HASHTAG_COUNT = 5;
 const HASHTAG_ERROR_TEXT = 'Хештеги заполнены неправильно';
+const SCALE_STEP = 25;
+const MIN_SCALE = 25;
+const MAX_SCALE = 100;
+const DEFAULT_SCALE = 100;
 
 export {
   NUMBER_OF_POSTS,
@@ -27,4 +31,8 @@ export {
   HASHTAG_CHECK,
   MAX_HASHTAG_COUNT,
   HASHTAG_ERROR_TEXT,
+  SCALE_STEP,
+  MIN_SCALE,
+  MAX_SCALE,
+  DEFAULT_SCALE,
 };
