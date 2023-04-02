@@ -1,6 +1,8 @@
 import { HASHTAG_CHECK, MAX_HASHTAG_COUNT, HASHTAG_ERROR_TEXT } from './varibles.js';
 import { resetScale, setScale } from './scale.js';
 import { resetEffects } from './effects.js';
+import { handleGetFail } from './message.js';
+import { sendData } from './api.js';
 
 const body = document.querySelector('body');
 const formModal = document.querySelector('.img-upload__overlay');
@@ -9,6 +11,13 @@ const uploadFile = document.querySelector('#upload-file');
 const uploadCancelButton = document.querySelector('.img-upload__cancel');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
+
+const SubmitButtonText = {
+  IDLE: 'Данные опубликованы',
+  SENDING: 'Сохраняю...',
+  POSTING: 'Сохранить'
+};
+const submitButton = document.querySelector('#upload-submit');
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -60,13 +69,27 @@ pristine.addValidator(
   HASHTAG_ERROR_TEXT
 );
 
-const handleFormSubmit = (evt) => {
-  const valid = pristine.validate();
-  if (valid) {
-    form.submit();
-  }
-  evt.preventDefault();
+const unblockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = SubmitButtonText.IDLE;
 };
+
+const handleFormSubmit = (onSuccess) => {
+  const valid = pristine.validate();
+  form.addEventListener('submit',(evt) => {
+    if (valid) {
+      form.submit();
+      sendData(new FormData(evt.target))
+        .then(onSuccess)
+        .catch((err) => {
+          handleGetFail(err.message);
+        })
+        .finally(unblockSubmitButton);
+      setTimeout (() => hideModal(), 3000);
+    }
+  });
+};
+
 
 const showModal = () => {
   setScale();
