@@ -78,7 +78,6 @@ const handleFormSubmit = (onSuccess) => {
   const valid = pristine.validate();
   form.addEventListener('submit',(evt) => {
     if (valid) {
-      form.submit();
       sendData(new FormData(evt.target))
         .then(onSuccess)
         .catch((err) => {
@@ -104,4 +103,4 @@ const clickOnUpload = () => {
   uploadFile.addEventListener('change', showModal);
 };
 
-export { clickOnUpload };
+export { clickOnUpload, handleDocumentKeydown, hideModal };
