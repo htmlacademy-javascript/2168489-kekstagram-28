@@ -1,8 +1,8 @@
-import { createPhotos } from './data.js';
+import { getData } from './api.js';
 import { renderThumbnails } from './make-picture.js';
 import { clickOnUpload } from './form.js';
 
-renderThumbnails(createPhotos());
+renderThumbnails(getData());
 clickOnUpload();
 
 
