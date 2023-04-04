@@ -51,15 +51,7 @@ function closeErrorMessage () {
   document.addEventListener('keydown', handleDocumentKeydown);
 }
 
-const showErrorMessage = () => {
-  document.querySelector('.error').classList.remove('hidden');
-  errorButton.addEventListener('click', closeErrorMessage);
-  document.addEventListener('keydown', handleDocumentErrorKeydown);
-  document.addEventListener('click', onDocumentClick);
-  document.removeEventListener('keydown', handleDocumentKeydown);
-};
-
-const handleGetFail = () => {
+const handleGetFail = (errorText) => {
   const errorBlock = document.createElement('div');
   errorBlock.style.position = 'fixed';
   errorBlock.style.top = '0';
@@ -70,7 +62,7 @@ const handleGetFail = () => {
   errorBlock.style.textAlign = 'center';
   errorBlock.style.padding = '20px';
   errorBlock.style.backgroundColor = 'white';
-  errorBlock.textContent = 'Произошла ошибка загрузки';
+  errorBlock.textContent = errorText;
   document.body.append(errorBlock);
 
   setTimeout(() => {
@@ -80,4 +72,4 @@ const handleGetFail = () => {
 
 createMessages();
 
-export { createMessages, showSuccessMessage, showErrorMessage, handleGetFail };
+export { createMessages, showSuccessMessage, handleGetFail };

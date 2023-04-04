@@ -1,7 +1,7 @@
 import { HASHTAG_CHECK, MAX_HASHTAG_COUNT, HASHTAG_ERROR_TEXT } from './varibles.js';
 import { resetScale, setScale } from './scale.js';
 import { resetEffects } from './effects.js';
-import { handleGetFail } from './message.js';
+import { handleGetFail, showSuccessMessage } from './message.js';
 import { sendData } from './api.js';
 
 const body = document.querySelector('body');
@@ -69,17 +69,25 @@ pristine.addValidator(
   HASHTAG_ERROR_TEXT
 );
 
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = SubmitButtonText.SENDING;
+};
+
 const unblockSubmitButton = () => {
   submitButton.disabled = true;
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
 const handleFormSubmit = (onSuccess) => {
-  const valid = pristine.validate();
   form.addEventListener('submit',(evt) => {
+    evt.preventDefault();
+    const valid = pristine.validate();
     if (valid) {
+      blockSubmitButton();
       sendData(new FormData(evt.target))
         .then(onSuccess)
+        .then(showSuccessMessage)
         .catch((err) => {
           handleGetFail(err.message);
         })
