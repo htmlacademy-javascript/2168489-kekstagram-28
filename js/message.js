@@ -1,5 +1,6 @@
 import { ERROR_TIMEOUT } from './varibles.js';
 import { isEscapeKey } from './utils.js';
+import { hideModal } from './form.js';
 
 const successMessageTemplate = document
   .querySelector('#success')
@@ -32,17 +33,21 @@ const handleSuccessCloseButtonClick = () => {
 
 function closeSuccessMessage () {
   document.body.querySelector('.success').remove();
+
+  document.removeEventListener('keydown', handleDocumentKeydownSuccess);
+  document.body.removeEventListener('click', handleDocumentClickSuccess);
+
 }
 
 const showSuccessMessage = () => {
   const successModal = successMessageTemplate.cloneNode(true);
+  document.body.append(successModal);
 
   successModal.querySelector('.success__button').addEventListener('click', handleSuccessCloseButtonClick);
   document.addEventListener('click', handleDocumentClickSuccess);
   document.addEventListener('keydown', handleDocumentKeydownSuccess);
 
-  document.append(successModal);
-  successModal.reset();
+  hideModal();
 };
 
 const handleDocumentKeydownError = (evt) => {
@@ -67,6 +72,9 @@ const handleErrorCloseButtonClick = () => {
 
 function closeErrorMessage () {
   document.body.querySelector('.error').remove();
+
+  document.removeEventListener('keydown', handleDocumentKeydownError);
+  document.body.removeEventListener('click', handleDocumentClickError);
 }
 
 const showErrorMessage = () => {
@@ -76,7 +84,7 @@ const showErrorMessage = () => {
   document.addEventListener('click', handleDocumentClickError);
   document.addEventListener('keydown', handleDocumentKeydownError);
 
-  document.append(errorModal);
+  document.body.append(errorModal);
 };
 
 const handleGetFail = (errorText) => {
@@ -97,6 +105,5 @@ const handleGetFail = (errorText) => {
     errorBlock.remove();
   }, ERROR_TIMEOUT);
 };
-
 
 export { showSuccessMessage, showErrorMessage, handleGetFail };
