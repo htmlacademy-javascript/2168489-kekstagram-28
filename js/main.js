@@ -1,7 +1,8 @@
-import { getData, sendData } from './api.js';
+import { getData } from './api.js';
+import { clickOnUpload } from './form.js';
 
 
 getData();
-sendData();
+clickOnUpload();
 
 

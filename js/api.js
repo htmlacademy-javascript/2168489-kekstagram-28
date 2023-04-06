@@ -1,6 +1,6 @@
 import { renderThumbnails } from './make-picture.js';
-import { handleGetFail } from './message.js';
-import { clickOnUpload } from './form.js';
+import { handleGetFail, showSuccessMessage, showErrorMessage } from './message.js';
+
 
 const BASE_URL = 'https://28.javascript.pages.academy/kekstagram';
 const Route = {
@@ -35,6 +35,6 @@ const load = (route, errorText, onSuccess, onFail, method = Method.GET, body = n
 const getData = () => load(Route.GET_DATA, ErrorText.GET_DATA, renderThumbnails, handleGetFail);
 
 const sendData = (body) =>
-  load(Route.SEND_DATA, ErrorText.SEND_DATA, clickOnUpload, handleGetFail, Method.POST, body);
+  load(Route.SEND_DATA, ErrorText.SEND_DATA, showSuccessMessage, showErrorMessage, Method.POST, body);
 
 export { getData, sendData };
