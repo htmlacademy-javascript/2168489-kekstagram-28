@@ -57,12 +57,12 @@ pristine.addValidator(
 );
 
 const blockSubmitButton = () => {
-  submitButton.setAttribute('disabled');
+  submitButton.setAttribute('disabled', true);
   submitButton.textContent = SubmitButtonText.SENDING;
 };
 
 const unblockSubmitButton = () => {
-  submitButton.removeAttribute('disabled', true);
+  submitButton.removeAttribute('disabled');
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
@@ -88,7 +88,7 @@ function hideModal () {
   body.classList.remove('modal-open');
 
   document.removeEventListener('keydown', handleDocumentKeydown);
-  form.revomeEventListener('submit', handleFormSubmit);
+  form.removeEventListener('submit', handleFormSubmit);
   uploadCancelButton.removeEventListener('click', hideModal);
 }
 
@@ -107,4 +107,4 @@ const clickOnUpload = () => {
   uploadFile.addEventListener('change', showModal);
 };
 
-export { clickOnUpload };
+export { clickOnUpload, hideModal };
