@@ -6,6 +6,7 @@ import {
   descriptions,
   messages,
   names,
+  TIMEDELAY,
 } from './varibles.js';
 
 const getRandomValue = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
@@ -22,6 +23,15 @@ const getName = () => names[getRandomValue(0, names.length - 1)];
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
+const debounce = (callback, timeoutDelay = TIMEDELAY) => {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
 export {
   getRandomValue,
   getDescription,
@@ -30,4 +40,5 @@ export {
   getMessage,
   getName,
   isEscapeKey,
+  debounce,
 };

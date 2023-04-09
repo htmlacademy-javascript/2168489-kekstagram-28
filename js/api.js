@@ -2,7 +2,7 @@ import { renderThumbnails } from './make-picture.js';
 import { handleGetFail, showSuccessMessage, showErrorMessage } from './message.js';
 
 
-const BASE_URL = 'https://28.javascript.pages.academy/kekstagram';
+const BASE_URL = 'https://28.javascript.pages.academy/kekstagram1';
 const Route = {
   GET_DATA: '/data',
   SEND_DATA: '/',
