@@ -29,33 +29,28 @@ const getFiltredPictures = (pictures) => {
   }
 };
 
-const debouncedRenderGallery = debounce(renderThumbnails, TIMEDELAY);
-
 const initFilters = (pictures) => {
-  debouncedRenderGallery(pictures);
   filters.classList.remove('img-filters--inactive');
-  filters.querySelectorAll('button').forEach((item) => {
-    item.addEventListener('click', (evt) => {
-      if (!evt.target.classList.contains('img-filters__button')) {
-        return;
-      }
+  filters.addEventListener('click', debounce((evt) => {
+    if (!evt.target.classList.contains('img-filters__button')) {
+      return;
+    }
 
-      const clickedButton = evt.target;
-      if (clickedButton.id === currentFilter) {
-        return;
-      }
+    const clickedButton = evt.target;
+    if (clickedButton.id === currentFilter) {
+      return;
+    }
 
-      filters
-        .querySelector('.img-filters__button--active')
-        .classList.remove('img-filters__button--active');
+    filters
+      .querySelector('.img-filters__button--active')
+      .classList.remove('img-filters__button--active');
 
-      clickedButton.classList.add('img-filters__button--active');
+    clickedButton.classList.add('img-filters__button--active');
 
-      currentFilter = clickedButton.id;
+    currentFilter = clickedButton.id;
 
-      renderThumbnails(getFiltredPictures(pictures));
-    });
-  });
+    renderThumbnails(getFiltredPictures(pictures));
+  }), TIMEDELAY);
   renderThumbnails(pictures);
 };
 
