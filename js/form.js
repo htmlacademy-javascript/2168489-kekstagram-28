@@ -66,6 +66,10 @@ const unblockSubmitButton = () => {
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
+const unlockSubmitButton = () => {
+  submitButton.removeAttribute('disabled');
+};
+
 const handleFormSubmit = (evt) => {
   evt.preventDefault();
 
@@ -105,6 +109,7 @@ const showModal = () => {
 
 const clickOnUpload = () => {
   uploadFile.addEventListener('change', showModal);
+  unlockSubmitButton();
 };
 
 export { clickOnUpload, hideModal };

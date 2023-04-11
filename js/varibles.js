@@ -17,6 +17,7 @@ const MIN_SCALE = 25;
 const MAX_SCALE = 100;
 const DEFAULT_SCALE = 100;
 const ERROR_TIMEOUT = 5000;
+const TIMEDELAY = 500;
 
 export {
   NUMBER_OF_POSTS,
@@ -37,4 +38,5 @@ export {
   MAX_SCALE,
   DEFAULT_SCALE,
   ERROR_TIMEOUT,
+  TIMEDELAY,
 };
