@@ -12,7 +12,6 @@ const Filter = {
 const filters = document.querySelector('.img-filters');
 let currentFilter = Filter.DEFAULT;
 
-
 const sortRandomly = (pictures) => pictures.slice().sort(() => Math.random() - 0.5).slice(0, PICTURES_COUNT);
 
 const compareDiscussed = (pictureA, pictureB) => pictureB.comments.length - pictureA.comments.length;

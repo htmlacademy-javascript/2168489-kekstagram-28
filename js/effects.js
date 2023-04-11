@@ -93,7 +93,7 @@ const updateSlider = () => {
   }
 };
 
-const onEffectsChange = (evt) => {
+const handleEffectsChange = (evt) => {
   if (!evt.target.classList.contains('effects__radio')) {
     return;
   }
@@ -103,7 +103,7 @@ const onEffectsChange = (evt) => {
   updateSlider();
 };
 
-const onSliderUpdate = () => {
+const handleSliderUpdate = () => {
   const sliderValue = sliderElement.noUiSlider.get();
 
   if (isDefault()) {
@@ -133,7 +133,7 @@ noUiSlider.create(sliderElement, {
 
 hideSlider();
 
-effectsElement.addEventListener('change', onEffectsChange);
-sliderElement.noUiSlider.on('update', onSliderUpdate);
+effectsElement.addEventListener('change', handleEffectsChange);
+sliderElement.noUiSlider.on('update', handleSliderUpdate);
 
 export { resetEffects };
