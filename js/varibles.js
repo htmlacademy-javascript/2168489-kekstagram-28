@@ -18,6 +18,7 @@ const MAX_SCALE = 100;
 const DEFAULT_SCALE = 100;
 const ERROR_TIMEOUT = 5000;
 const TIMEDELAY = 500;
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 export {
   NUMBER_OF_POSTS,
@@ -39,4 +40,5 @@ export {
   DEFAULT_SCALE,
   ERROR_TIMEOUT,
   TIMEDELAY,
+  FILE_TYPES,
 };
