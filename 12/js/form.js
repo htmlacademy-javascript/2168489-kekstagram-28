@@ -13,9 +13,8 @@ const commentField = document.querySelector('.text__description');
 const submitButton = document.querySelector('#upload-submit');
 
 const SubmitButtonText = {
-  IDLE: 'Данные опубликованы',
+  IDLE: 'Сохранить',
   SENDING: 'Сохраняю...',
-  POSTING: 'Сохранить'
 };
 
 const pristine = new Pristine(form, {
@@ -66,10 +65,6 @@ const unblockSubmitButton = () => {
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
-const unlockSubmitButton = () => {
-  submitButton.removeAttribute('disabled');
-};
-
 const handleFormSubmit = (evt) => {
   evt.preventDefault();
 
@@ -77,8 +72,7 @@ const handleFormSubmit = (evt) => {
 
   if (valid) {
     blockSubmitButton();
-    sendData(new FormData(evt.target))
-      .then(() => unblockSubmitButton);
+    sendData(new FormData(evt.target));
   }
 };
 
@@ -96,7 +90,6 @@ function hideModal () {
   uploadCancelButton.removeEventListener('click', hideModal);
 }
 
-
 const showModal = () => {
   setScale();
   formModal.classList.remove('hidden');
@@ -109,7 +102,6 @@ const showModal = () => {
 
 const clickOnUpload = () => {
   uploadFile.addEventListener('change', showModal);
-  unlockSubmitButton();
 };
 
-export { clickOnUpload, hideModal };
+export { clickOnUpload, hideModal, unblockSubmitButton };

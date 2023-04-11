@@ -1,6 +1,6 @@
 import { ERROR_TIMEOUT } from './varibles.js';
 import { isEscapeKey } from './utils.js';
-import { hideModal } from './form.js';
+import { hideModal, unblockSubmitButton } from './form.js';
 
 const successMessageTemplate = document
   .querySelector('#success')
@@ -35,7 +35,7 @@ function closeSuccessMessage () {
   document.body.querySelector('.success').remove();
 
   document.removeEventListener('keydown', handleDocumentKeydownSuccess);
-  document.body.removeEventListener('click', handleDocumentClickSuccess);
+  document.removeEventListener('click', handleDocumentClickSuccess);
 
 }
 
@@ -47,6 +47,7 @@ const showSuccessMessage = () => {
   document.addEventListener('click', handleDocumentClickSuccess);
   document.addEventListener('keydown', handleDocumentKeydownSuccess);
 
+  unblockSubmitButton();
   hideModal();
 };
 
@@ -65,7 +66,6 @@ const handleDocumentClickError = (evt) => {
   }
 };
 
-
 const handleErrorCloseButtonClick = () => {
   closeErrorMessage();
 };
@@ -74,7 +74,7 @@ function closeErrorMessage () {
   document.body.querySelector('.error').remove();
 
   document.removeEventListener('keydown', handleDocumentKeydownError);
-  document.body.removeEventListener('click', handleDocumentClickError);
+  document.removeEventListener('click', handleDocumentClickError);
 }
 
 const showErrorMessage = () => {
@@ -85,6 +85,8 @@ const showErrorMessage = () => {
   document.addEventListener('keydown', handleDocumentKeydownError);
 
   document.body.append(errorModal);
+
+  unblockSubmitButton();
 };
 
 const handleGetFail = (errorText) => {

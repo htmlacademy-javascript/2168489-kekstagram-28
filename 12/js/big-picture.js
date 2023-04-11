@@ -55,7 +55,6 @@ const renderMoreComments = () => {
 
 const handleCloseButtonClick = () => hideModal();
 
-
 const handleDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
@@ -79,7 +78,6 @@ const showModal = () => {
   cancelCross.addEventListener('click', handleCloseButtonClick);
   commentsLoader.addEventListener('click', renderMoreComments);
 };
-
 
 const showFullPicture = ({url, likes, comments, description}) => {
   showModal();
