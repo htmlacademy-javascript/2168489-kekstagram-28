@@ -1,15 +1,14 @@
 import { SCALE_STEP, MIN_SCALE, MAX_SCALE, DEFAULT_SCALE } from './varibles.js';
 
-const scaleSmallerElement = document.querySelector('.scale__control--smaller');
-const scaleBiggerElement = document.querySelector('.scale__control--bigger');
+const scaleSmaller = document.querySelector('.scale__control--smaller');
+const scaleBigger = document.querySelector('.scale__control--bigger');
 const scaleControlValue = document.querySelector('.scale__control--value');
-const imageElement = document.querySelector('.img-upload__preview img');
+const image = document.querySelector('.img-upload__preview img');
 
 const scaleImage = (value) => {
-  imageElement.style.transform = `scale(${value / 100})`;
+  image.style.transform = `scale(${value / 100})`;
   scaleControlValue.value = `${value}%`;
 };
-
 
 const handleSmallerButtonClick = () => {
   const currentValue = parseInt(scaleControlValue.value, 10);
@@ -33,13 +32,11 @@ const handleBiggerButtonClick = function () {
   scaleImage(newValue);
 };
 
-
 const resetScale = () => scaleImage(DEFAULT_SCALE);
 const setScale = () => scaleImage(DEFAULT_SCALE);
 
-scaleSmallerElement.addEventListener('click', handleSmallerButtonClick);
+scaleSmaller.addEventListener('click', handleSmallerButtonClick);
 
-scaleBiggerElement.addEventListener('click', handleBiggerButtonClick);
+scaleBigger.addEventListener('click', handleBiggerButtonClick);
 
 export {resetScale , setScale};
-
