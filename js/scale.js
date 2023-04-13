@@ -21,7 +21,7 @@ const handleSmallerButtonClick = () => {
 const handleBiggerButtonClick = function () {
   const currentValue = parseInt(scaleControlValue.value, 10);
 
-  const newValue = currentValue <= MAX_SCALE ? MAX_SCALE : currentValue - SCALE_STEP;
+  const newValue = currentValue >= MAX_SCALE ? MAX_SCALE : currentValue + SCALE_STEP;
 
   scaleImage(newValue);
 };
