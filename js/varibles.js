@@ -4,10 +4,6 @@ const MAX_NUMBERS_OF_LIKES = 200;
 const MAX_COMMENTS = 100;
 const MIN_AVATAR_ID = 1;
 const MAX_AVATAR_ID = 6;
-const descriptions = ['Отличный вид', 'Вернуться бы еще раз сюда', 'Я это съел', 'Мои друзья', 'Посиделки'];
-const messages = ['В целом всё неплохо. Но не всё.',
-  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.'];
-const names = ['Михаил', 'Иван', 'Сергей', 'Татьяна', 'Мария', 'Ольга', 'Ярослава'];
 const COMMENTS_PER_LOAD = 5;
 const HASHTAG_CHECK = /#[a-zа-яё0-9]{1,19}$/i;
 const MAX_HASHTAG_COUNT = 5;
@@ -20,6 +16,15 @@ const ERROR_TIMEOUT = 5000;
 const TIMEDELAY = 500;
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
+const descriptions = ['Отличный вид', 'Вернуться бы еще раз сюда', 'Я это съел', 'Мои друзья', 'Посиделки'];
+const messages = ['В целом всё неплохо. Но не всё.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.'];
+const names = ['Михаил', 'Иван', 'Сергей', 'Татьяна', 'Мария', 'Ольга', 'Ярослава'];
+const SubmitButtonText = {
+  IDLE: 'Сохранить',
+  SENDING: 'Сохраняю...',
+};
+
 export {
   NUMBER_OF_POSTS,
   MIN_NUMBERS_OF_LIKES,
@@ -27,9 +32,6 @@ export {
   MAX_COMMENTS,
   MIN_AVATAR_ID,
   MAX_AVATAR_ID,
-  descriptions,
-  messages,
-  names,
   COMMENTS_PER_LOAD,
   HASHTAG_CHECK,
   MAX_HASHTAG_COUNT,
@@ -41,4 +43,8 @@ export {
   ERROR_TIMEOUT,
   TIMEDELAY,
   FILE_TYPES,
+  descriptions,
+  messages,
+  names,
+  SubmitButtonText,
 };
