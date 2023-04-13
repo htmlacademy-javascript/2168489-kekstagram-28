@@ -17,6 +17,8 @@ const cancelCross = bigPicture.querySelector('#picture-cancel');
 let shownComments = [];
 
 const createFullPictureComments = (commentsData) => {
+  const fragment = document.createDocumentFragment();
+
   commentsData.forEach((item) => {
     const { avatar, name, message } = item;
 
@@ -26,9 +28,9 @@ const createFullPictureComments = (commentsData) => {
     comment.querySelector('.social__picture').alt = name;
     comment.querySelector('.social__text').textContent = message;
 
-    socialComments.append(comment);
+    fragment.append(comment);
   });
-
+  socialComments.append(fragment);
 };
 
 const showCommentsByDefault = (comments) => {

@@ -1,4 +1,4 @@
-import { HASHTAG_CHECK, MAX_HASHTAG_COUNT, HASHTAG_ERROR_TEXT } from './varibles.js';
+import { HASHTAG_CHECK, MAX_HASHTAG_COUNT, HASHTAG_ERROR_TEXT, SubmitButtonText } from './varibles.js';
 import { resetScale, setScale } from './scale.js';
 import { resetEffects } from './effects.js';
 import { sendData } from './api.js';
@@ -11,11 +11,6 @@ const uploadCancelButton = document.querySelector('.img-upload__cancel');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 const submitButton = document.querySelector('#upload-submit');
-
-const SubmitButtonText = {
-  IDLE: 'Сохранить',
-  SENDING: 'Сохраняю...',
-};
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
