@@ -15,15 +15,15 @@ const DEFAULT_SCALE = 100;
 const ERROR_TIMEOUT = 5000;
 const TIMEDELAY = 500;
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+const SubmitButtonText = {
+  IDLE: 'Сохранить',
+  SENDING: 'Сохраняю...',
+};
 
 const descriptions = ['Отличный вид', 'Вернуться бы еще раз сюда', 'Я это съел', 'Мои друзья', 'Посиделки'];
 const messages = ['В целом всё неплохо. Но не всё.',
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.'];
 const names = ['Михаил', 'Иван', 'Сергей', 'Татьяна', 'Мария', 'Ольга', 'Ярослава'];
-const SubmitButtonText = {
-  IDLE: 'Сохранить',
-  SENDING: 'Сохраняю...',
-};
 
 export {
   NUMBER_OF_POSTS,
@@ -43,8 +43,8 @@ export {
   ERROR_TIMEOUT,
   TIMEDELAY,
   FILE_TYPES,
+  SubmitButtonText,
   descriptions,
   messages,
   names,
-  SubmitButtonText,
 };
